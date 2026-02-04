@@ -1,0 +1,82 @@
+total 19676
+drwxr-xr-x  7 user user     4096 Feb  4 16:52 .
+drwxr-xr-x 20 root root     4096 Jan 30 00:34 ..
+drwxr-xr-x  4 user user     4096 Jan 27 22:43 .agent_hooks
+-rw-r--r--  1 root root     5484 Feb  4 16:52 README.md
+drwxr-xr-x  8 root root     4096 Feb  4 16:27 apk_extracted
+drwxr-xr-x  2 root root     4096 Feb  4 16:32 css
+-rw-r--r--  1 root root    28971 Feb  4 16:39 index.html
+drwxr-xr-x  2 root root     4096 Feb  4 16:47 js
+-rw-r--r--  1 root root 20072145 Feb  4 16:25 minipay.apk
+drwxr-xr-x  2 root root     4096 Feb  4 16:52 outputs
+-rw-r--r--  1 root root     1295 Feb  4 16:50 todo.md
+/workspace/
+├── README.md
+├── apk_extracted
+│   ├── AndroidManifest.xml
+│   ├── DebugProbesKt.bin
+│   ├── META-INF
+│   ├── androidsupportmultidexversion.txt
+│   ├── assets
+│   ├── classes.dex
+│   ├── classes2.dex
+│   ├── classes3.dex
+│   ├── client_analytics.proto
+│   ├── firebase-analytics.properties
+│   ├── firebase-annotations.properties
+│   ├── firebase-encoders-proto.properties
+│   ├── firebase-encoders.properties
+│   ├── firebase-iid-interop.properties
+│   ├── firebase-iid.properties
+│   ├── firebase-measurement-connector.properties
+│   ├── firebase-messaging.properties
+│   ├── kotlin
+│   ├── kotlin-tooling-metadata.json
+│   ├── lib
+│   ├── manifest.txt
+│   ├── manifest_content.txt
+│   ├── okhttp3
+│   ├── play-services-ads-base.properties
+│   ├── play-services-ads-identifier.properties
+│   ├── play-services-ads-lite.properties
+│   ├── play-services-ads.properties
+│   ├── play-services-auth-api-phone.properties
+│   ├── play-services-auth-base.properties
+│   ├── play-services-auth.properties
+│   ├── play-services-base.properties
+│   ├── play-services-basement.properties
+│   ├── play-services-cloud-messaging.properties
+│   ├── play-services-gass.properties
+│   ├── play-services-location.properties
+│   ├── play-services-measurement-api.properties
+│   ├── play-services-measurement-base.properties
+│   ├── play-services-measurement-impl.properties
+│   ├── play-services-measurement-sdk-api.properties
+│   ├── play-services-measurement-sdk.properties
+│   ├── play-services-measurement.properties
+│   ├── play-services-places-placereport.properties
+│   ├── play-services-safetynet.properties
+│   ├── play-services-stats.properties
+│   ├── play-services-tasks.properties
+│   ├── res
+│   ├── resources.arsc
+│   └── transport-api.properties
+├── css
+│   └── styles.css
+├── index.html
+├── js
+│   └── app.js
+├── minipay.apk
+├── outputs
+│   ├── workspace_output_1770222450_4759.txt
+│   ├── workspace_output_1770222454_8514.txt
+│   ├── workspace_output_1770222468_1373.txt
+│   ├── workspace_output_1770222481_3950.txt
+│   ├── workspace_output_1770222500_6762.txt
+│   ├── workspace_output_1770222508_6156.txt
+│   ├── workspace_output_1770222517_122.txt
+│   ├── workspace_output_1770223940_4041.txt
+│   └── workspace_output_1770223971_1241.txt
+└── todo.md
+
+11 directories, 57 files

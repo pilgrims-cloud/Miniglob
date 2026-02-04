@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Bank - Modern Banking</title>
+    <link rel="stylesheet" href="css/styles.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <!-- Cover Page -->
+    <div id="coverPage" class="cover-page active">
+        <div class="cover-content">
+            <div class="bank-logo">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" fill="#1a237e"/>
+                    <path d="M30 40 L70 40 L70 45 L30 45 Z" fill="white"/>
+                    <path d="M30 50 L70 50 L70 55 L30 55 Z" fill="white"/>
+                    <path d="M30 60 L60 60 L60 65 L30 65 Z" fill="white"/>
+                    <path d="M40 30 L40 70 L45 70 L45 30 Z" fill="white"/>
+                </svg>
+            </div>
+            <h1 class="bank-title">Global Bank</h1>
+            <p class="bank-subtitle">Your Trusted Financial Partner</p>
+            <p class="bank-subtitle" style="font-size: 0.9rem; margin-top: -2rem; margin-bottom: 2rem;">Owner: Olawale Abdul-Ganiyu</p>
+            <div class="auth-buttons">
+                <button class="auth-btn primary" onclick="showLogin('customer')">Customer Login</button>
+                <button class="auth-btn secondary" onclick="showLogin('admin')">Admin Login</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="card-title" id="loginTitle">Login</h2>
+                <button class="modal-close" onclick="closeLoginModal()">&times;</button>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" id="loginEmail" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" id="loginPassword" required placeholder="Enter your password">
+                </div>
+                <div class="alert alert-warning" style="display: none;" id="loginAlert">
+                    Invalid credentials. Please try again.
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                <p style="text-align: center; margin-top: 1rem;">
+                    <a href="#" onclick="toggleRegisterForm()" style="color: var(--primary-color);">Don't have an account? Register</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="card-title">Register New Account</h2>
+                <button class="modal-close" onclick="closeRegisterModal()">&times;</button>
+            </div>
+            <form id="registerForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="regFirstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="regLastName" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" id="regEmail" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" id="regPhone" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" id="regPassword" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="regConfirmPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Customer Dashboard -->
+    <div id="customerDashboard" class="dashboard">
+        <header class="header">
+            <div class="container header-content">
+                <div class="header-logo">
+                    <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="45" fill="white"/>
+                        <path d="M30 40 L70 40 L70 45 L30 45 Z" fill="#1a237e"/>
+                        <path d="M30 50 L70 50 L70 55 L30 55 Z" fill="#1a237e"/>
+                        <path d="M30 60 L60 60 L60 65 L30 65 Z" fill="#1a237e"/>
+                        <path d="M40 30 L40 70 L45 70 L45 30 Z" fill="#1a237e"/>
+                    </svg>
+                </div>
+                <div class="user-menu">
+                    <div class="user-info">
+                        <div class="user-name" id="customerName">John Doe</div>
+                        <div class="user-role">Customer</div>
+                    </div>
+                    <button class="logout-btn" onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <nav class="nav-menu">
+            <div class="container nav-items">
+                <button class="nav-item active" onclick="showCustomerSection('overview')">Overview</button>
+                <button class="nav-item" onclick="showCustomerSection('transactions')">Transactions</button>
+                <button class="nav-item" onclick="showCustomerSection('transfer')">Transfer</button>
+                <button class="nav-item" onclick="showCustomerSection('withdraw')">Withdraw</button>
+                <button class="nav-item" onclick="showCustomerSection('credit')">Credit/Debit</button>
+                <button class="nav-item" onclick="showCustomerSection('profile')">Profile</button>
+            </div>
+        </nav>
+
+        <main class="content container">
+            <!-- Overview Section -->
+            <section id="customerOverview" class="content-section active">
+                <div class="balance-card">
+                    <h2 class="balance-label">Available Balance</h2>
+                    <div class="balance-amount">$<span id="customerBalance">0.00</span></div>
+                    <div class="balance-actions">
+                        <button class="btn btn-success" onclick="showCreditModal('credit')">Add Credit</button>
+                        <button class="btn btn-warning" onclick="showCreditModal('debit')">Add Debit</button>
+                        <button class="btn btn-primary" onclick="showCustomerSection('transfer')">Transfer Money</button>
+                        <button class="btn btn-danger" onclick="showCustomerSection('withdraw')">Withdraw</button>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalCredit">$0.00</div>
+                        <div class="stat-label">Total Credit</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalDebit">$0.00</div>
+                        <div class="stat-label">Total Debit</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="transactionCount">0</div>
+                        <div class="stat-label">Transactions</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Recent Transactions</h3>
+                        <button class="btn btn-secondary btn-small" onclick="showCustomerSection('transactions')">View All</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Type</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentTransactions">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Transactions Section -->
+            <section id="customerTransactions" class="content-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Transaction History</h3>
+                        <button class="btn btn-primary btn-small" onclick="exportTransactions()">Export</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Type</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="allTransactions">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Transfer Section -->
+            <section id="customerTransfer" class="content-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Transfer Money</h3>
+                    </div>
+                    <form id="transferForm">
+                        <div class="form-group">
+                            <label class="form-label">Recipient Account Number</label>
+                            <input type="text" class="form-control" id="transferAccount" required placeholder="Enter account number">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Recipient Name</label>
+                            <input type="text" class="form-control" id="transferName" required placeholder="Enter recipient name">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Amount</label>
+                            <input type="number" class="form-control" id="transferAmount" required placeholder="Enter amount" min="0.01" step="0.01">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Description</label>
+                            <input type="text" class="form-control" id="transferDescription" placeholder="Enter description (optional)">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Transfer Money</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Withdraw Section -->
+            <section id="customerWithdraw" class="content-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Withdraw Funds</h3>
+                    </div>
+                    <form id="withdrawForm">
+                        <div class="form-group">
+                            <label class="form-label">Bank Type</label>
+                            <select class="form-control" id="withdrawBankType" required onchange="updateBankOptions()">
+                                <option value="">Select bank type</option>
+                                <option value="microfinance">Microfinance Bank</option>
+                                <option value="commercial">Commercial Bank</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Select Bank</label>
+                            <select class="form-control" id="withdrawBank" required>
+                                <option value="">Select bank</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Account Number</label>
+                            <input type="text" class="form-control" id="withdrawAccount" required placeholder="Enter account number">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Account Name</label>
+                            <input type="text" class="form-control" id="withdrawAccountName" required placeholder="Enter account name">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Amount</label>
+                            <input type="number" class="form-control" id="withdrawAmount" required placeholder="Enter amount" min="0.01" step="0.01">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Withdraw Funds</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Credit/Debit Section -->
+            <section id="customerCredit" class="content-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Credit / Debit Management</h3>
+                    </div>
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="creditDebitTransactions">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profile Section -->
+            <section id="customerProfile" class="content-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">My Profile</h3>
+                        <button class="btn btn-primary btn-small" onclick="showEditProfileModal()">Edit Profile</button>
+                    </div>
+                    <div id="profileDetails">
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="dashboard">
+        <header class="header">
+            <div class="container header-content">
+                <div class="header-logo">
+                    <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="45" fill="white"/>
+                        <path d="M30 40 L70 40 L70 45 L30 45 Z" fill="#1a237e"/>
+                        <path d="M30 50 L70 50 L70 55 L30 55 Z" fill="#1a237e"/>
+                        <path d="M30 60 L60 60 L60 65 L30 65 Z" fill="#1a237e"/>
+                        <path d="M40 30 L40 70 L45 70 L45 30 Z" fill="#1a237e"/>
+                    </svg>
+                </div>
+                <div class="user-menu">
+                    <div class="user-info">
+                        <div class="user-name">Administrator</div>
+                        <div class="user-role">Admin</div>
+                    </div>
+                    <button class="logout-btn" onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <nav class="nav-menu">
+            <div class="container nav-items">
+                <button class="nav-item active" onclick="showAdminSection('overview')">Overview</button>
+                <button class="nav-item" onclick="showAdminSection('users')">User Management</button>
+                <button class="nav-item" onclick="showAdminSection('transactions')">All Transactions</button>
+                <button class="nav-item" onclick="showAdminSection('reports')">Reports</button>
+                <button class="nav-item" onclick="showAdminSection('settings')">Settings</button>
+            </div>
+        </nav>
+
+        <main class="content container">
+            <!-- Admin Overview -->
+            <section id="adminOverview" class="content-section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalUsers">0</div>
+                        <div class="stat-label">Total Users</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalTransactions">0</div>
+                        <div class="stat-label">Total Transactions</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalVolume">$0.00</div>
+                        <div class="stat-label">Total Volume</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="pendingApprovals">0</div>
+                        <div class="stat-label">Pending Approvals</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Recent Activities</h3>
+                    </div>
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>User</th>
+                                    <th>Action</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentActivities">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- User Management -->
+            <section id="adminUsers" class="content-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">User Management</h3>
+                        <button class="btn btn-primary btn-small" onclick="showRegisterCustomerModal()">Register Customer</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Balance</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="userList">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- All Transactions -->
+            <section id="adminTransactions" class="content-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">All Transactions</h3>
+                        <div class="card-actions">
+                            <button class="btn btn-secondary btn-small" onclick="filterTransactions('all')">All</button>
+                            <button class="btn btn-success btn-small" onclick="filterTransactions('credit')">Credit</button>
+                            <button class="btn btn-warning btn-small" onclick="filterTransactions('debit')">Debit</button>
+                            <button class="btn btn-primary btn-small" onclick="exportTransactions()">Export</button>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>User</th>
+                                    <th>Type</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminTransactionList">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reports -->
+            <section id="adminReports" class="content-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Reports & Analytics</h3>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value" id="reportTotalCredit">$0.00</div>
+                            <div class="stat-label">Total Credits</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="reportTotalDebit">$0.00</div>
+                            <div class="stat-label">Total Debits</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="reportTransfers">$0.00</div>
+                            <div class="stat-label">Total Transfers</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="reportWithdrawals">$0.00</div>
+                            <div class="stat-label">Total Withdrawals</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="generateReport()">Generate Detailed Report</button>
+                </div>
+            </section>
+
+            <!-- Settings -->
+            <section id="adminSettings" class="content-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">System Settings</h3>
+                    </div>
+                    <form id="settingsForm">
+                        <div class="form-group">
+                            <label class="form-label">Bank Name</label>
+                            <input type="text" class="form-control" value="Global Bank">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Minimum Transfer Amount</label>
+                            <input type="number" class="form-control" value="1.00" step="0.01">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Maximum Transfer Amount</label>
+                            <input type="number" class="form-control" value="10000.00" step="0.01">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Withdrawal Fee (%)</label>
+                            <input type="number" class="form-control" value="0.5" step="0.1">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Settings</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Credit/Debit Modal -->
+    <div id="creditModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="card-title" id="creditModalTitle">Add Credit</h2>
+                <button class="modal-close" onclick="closeCreditModal()">&times;</button>
+            </div>
+            <form id="creditForm">
+                <input type="hidden" id="creditType">
+                <div class="form-group">
+                    <label class="form-label">Amount</label>
+                    <input type="number" class="form-control" id="creditAmount" required placeholder="Enter amount" min="0.01" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Description</label>
+                    <input type="text" class="form-control" id="creditDescription" placeholder="Enter description">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Transaction Modal -->
+    <div id="editTransactionModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="card-title">Edit Transaction</h2>
+                <button class="modal-close" onclick="closeEditTransactionModal()">&times;</button>
+            </div>
+            <form id="editTransactionForm">
+                <input type="hidden" id="editTransactionId">
+                <div class="form-group">
+                    <label class="form-label">Amount</label>
+                    <input type="number" class="form-control" id="editAmount" required step="0.01">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Description</label>
+                    <input type="text" class="form-control" id="editDescription" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Transaction</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div id="editProfileModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="card-title">Edit Profile</h2>
+                <button class="modal-close" onclick="closeEditProfileModal()">&times;</button>
+            </div>
+            <form id="editProfileForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="editFirstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="editLastName" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" id="editEmail" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phone</label>
+                    <input type="tel" class="form-control" id="editPhone" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Profile</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Register Customer Modal -->
+    <div id="registerCustomerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="card-title">Register New Customer</h2>
+                <button class="modal-close" onclick="closeRegisterCustomerModal()">&times;</button>
+            </div>
+            <form id="adminRegisterCustomerForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="adminRegFirstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="adminRegLastName" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" id="adminRegEmail" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" id="adminRegPhone" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" id="adminRegPassword" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Initial Balance</label>
+                    <input type="number" class="form-control" id="adminRegBalance" value="0.00" step="0.01">
+                </div>
+                <button type="submit" class="btn btn-primary">Create Customer Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Edit Customer Modal -->
+    <div id="adminEditCustomerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="card-title">Edit Customer Account</h2>
+                <button class="modal-close" onclick="closeAdminEditCustomerModal()">&times;</button>
+            </div>
+            <form id="adminEditCustomerForm">
+                <input type="hidden" id="adminEditCustomerId">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="adminEditFirstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="adminEditLastName" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" id="adminEditEmail" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phone</label>
+                    <input type="tel" class="form-control" id="adminEditPhone" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Account Balance</label>
+                    <input type="number" class="form-control" id="adminEditBalance" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Account Status</label>
+                    <select class="form-control" id="adminEditStatus">
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                        <option value="suspended">Suspended</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Customer Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Customer Credit/Debit Modal -->
+    <div id="adminCustomerCreditModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="card-title" id="adminCreditModalTitle">Add Credit to Customer</h2>
+                <button class="modal-close" onclick="closeAdminCustomerCreditModal()">&times;</button>
+            </div>
+            <form id="adminCustomerCreditForm">
+                <input type="hidden" id="adminCreditCustomerId">
+                <input type="hidden" id="adminCreditType">
+                <div class="form-group">
+                    <label class="form-label">Customer</label>
+                    <input type="text" class="form-control" id="adminCreditCustomerName" readonly>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Current Balance</label>
+                    <input type="text" class="form-control" id="adminCreditCurrentBalance" readonly>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Amount</label>
+                    <input type="number" class="form-control" id="adminCreditAmount" required min="0.01" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Description</label>
+                    <input type="text" class="form-control" id="adminCreditDescription" placeholder="Enter description">
+                </div>
+                <button type="submit" class="btn btn-primary">Process Transaction</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

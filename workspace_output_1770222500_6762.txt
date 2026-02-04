@@ -1,0 +1,12 @@
+total 848
+drwxr-xr-x 4 root root   4096 Feb  4 16:27 .
+drwxr-xr-x 8 root root   4096 Feb  4 16:27 ..
+drwxr-xr-x 2 root root   4096 Feb  4 16:27 css
+-rw-rw-rw- 1 root root 130203 Jan  1  1981 down.json
+-rw-rw-rw- 1 root root   3884 Jan  1  1981 filedownloader.properties
+drwxr-xr-x 2 root root   4096 Feb  4 16:27 img
+-rw-rw-rw- 1 root root 298089 Jan  1  1981 laugh.json
+-rw-rw-rw- 1 root root 157068 Jan  1  1981 like.json
+-rw-rw-rw- 1 root root 107532 Jan  1  1981 love.json
+-rw-rw-rw- 1 root root     60 Jan  1  1981 sentry-debug-meta.properties
+-rw-rw-rw- 1 root root 141144 Jan  1  1981 thug.json
